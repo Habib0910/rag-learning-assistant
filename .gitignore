@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated / large project data
+audios/
+videos/
+whisper/
+embeddings.joblib
+
+# Course transcript / source data
+jsons/
+
+# Generated test/output files
+output.json
+prompt.txt
+response.txt
+
+# Extra local files
+some extra stuffs/
+
+# VS Code
+.vscode/
