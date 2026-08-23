@@ -168,3 +168,13 @@ Instead of asking the language model to answer from general knowledge, the syste
 
 This allows the generated response to be grounded in the specific course content.
 
+
+## Demo
+
+Example query:
+
+> Where are HTML input tags taught in the course?
+
+The assistant retrieves the relevant course content and identifies the corresponding video and timestamp.
+
+![RAG Learning Assistant Demo](screenshots/demo.png)
