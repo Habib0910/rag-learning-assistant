@@ -73,15 +73,10 @@ The system retrieves the most relevant video sections and provides the video num
 
 ```text
 rag-learning-assistant/
-│
-├── abc.py
-├── createchunks.py
-├── proces_incoming.py
-├── read_chunks.py
-├── read_chunkstryy.py
-├── speech_to_text.py
-├── .gitignore
-└── README.md
+│├── extract_audio.py
+├── transcribe_videos.py
+├── generate_embeddings.py
+├── ask_assistant.py
 ```
 
 ## Local Requirements
@@ -133,18 +128,18 @@ The project is run as a sequence of Python scripts.
 ### 1. Extract Audio
 
 ```bash
-python abc.py
+python extract_audio.py
 
 ### 2. Generate Transcript chunks 
-python createchunks.py
+python transcribe_videos.py
 #This uses OpenAI Whisper to convert the Hindi audio into English text and creates timestamped transcript chunks.
 
 ### Generate Embeddings 
-python read_chunks.py
+python generate_embeddings.py
 # This generates embeddings for the transcript chunks using the nomic-embed-text model through Ollama.
 
 ### 4. Ask a question 
-python proces_incoming.py
+python ask_assistant.py
 # The program asks the user for a question, retrieves the most relevant transcript chunks using cosine similarity, and uses Llama 3.2 to generate the final response.
 
 
