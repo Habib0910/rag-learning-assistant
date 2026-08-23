@@ -96,6 +96,26 @@ This project requires:
 
 The large video, audio, Whisper model, generated embeddings, and course transcript data are intentionally excluded from the repository.
 
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Habib0910/rag-learning-assistant.git
+cd rag-learning-assistant
+
+### 2. InstaLL PYTHON  dependencies 
+pip install -r requirements.txt
+
+
+### 3.Install Ollama Models 
+#make Sure Ollama is running then 
+ollama pull nomic-embed-text
+ollama pull llama3.2
+
+### 4. Install FFmpeg , which is required for extracting audio from the course video 
+
+
 ## Future Improvements
 
 - Build a user-friendly web interface
@@ -103,3 +123,53 @@ The large video, audio, Whisper model, generated embeddings, and course transcri
 - Add conversation memory
 - Support more courses and languages
 - Add automated evaluation of retrieved answers
+
+
+
+## Running the Project
+
+The project is run as a sequence of Python scripts.
+
+### 1. Extract Audio
+
+```bash
+python abc.py
+
+### 2. Generate Transcript chunks 
+python createchunks.py
+#This uses OpenAI Whisper to convert the Hindi audio into English text and creates timestamped transcript chunks.
+
+### Generate Embeddings 
+python read_chunks.py
+# This generates embeddings for the transcript chunks using the nomic-embed-text model through Ollama.
+
+### 4. Ask a question 
+python proces_incoming.py
+# The program asks the user for a question, retrieves the most relevant transcript chunks using cosine similarity, and uses Llama 3.2 to generate the final response.
+
+
+
+## Technical Details
+
+The project uses a Retrieval-Augmented Generation (RAG) approach.
+
+### Retrieval
+
+When the user enters a question, the system converts the question into an embedding using `nomic-embed-text`.
+
+The embedding is compared with the stored transcript embeddings using cosine similarity.
+
+The top 5 most similar transcript chunks are retrieved.
+
+### Generation
+
+The retrieved transcript chunks and the user's question are provided to Llama 3.2.
+
+Llama 3.2 uses this retrieved context to generate a response that identifies the relevant video and timestamp.
+
+### Why RAG?
+
+Instead of asking the language model to answer from general knowledge, the system first retrieves relevant information from the course transcripts.
+
+This allows the generated response to be grounded in the specific course content.
+
