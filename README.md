@@ -79,6 +79,12 @@ rag-learning-assistant/
 ├── ask_assistant.py
 ```
 
+## Demo
+
+A short demonstration of the RAG-Based Learning Assistant in action.
+
+[▶️ Watch the project demo](./RAG%20based%20Ai%20learning%20assist%20demo.mp4)
+
 ## Local Requirements
 
 This project requires:
